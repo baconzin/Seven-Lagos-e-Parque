@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F5F5F5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0F2744;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2E5E3A;
+  }
+}
+
+@theme {
+  --font-sans: "Poppins", "Montserrat", sans-serif;
+  --font-display: "Montserrat", "Poppins", sans-serif;
+  
+  /* Natural & Noble Palette */
+  --color-primary-navy: #0F2744;     /* Azul Marinho Premium */
+  --color-primary-green: #2E5E3A;    /* Verde Natureza */
+  --color-primary-wood: #8B5A2B;     /* Marrom Madeira */
+  --color-primary-gold: #C9A227;     /* Dourado Imperial */
+  --color-primary-light: #F5F5F5;    /* Off-white */
+}
+
+/* Animations & Transitions */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(46, 94, 58, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(46, 94, 58, 0);
+  }
+}
+
+@keyframes pulse-whatsapp {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes wave {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite;
+}
+
+.animate-pulse-whatsapp {
+  animation: pulse-whatsapp 2.5s infinite;
+}
+
+.animate-wave-slow {
+  animation: wave 6s ease-in-out infinite;
+}
+
+/* Glassmorphism Classes */
+.glass-header {
+  background: rgba(15, 39, 68, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(139, 90, 43, 0.1);
+}
+
+/* Wood Grains & Finishes Texture Mock */
+.wood-gradient {
+  background: linear-gradient(135deg, #8B5A2B 0%, #5C3A1A 100%);
+}
+
+.navy-gradient {
+  background: linear-gradient(135deg, #0F2744 0%, #061221 100%);
+}
+
+/* Image Shimmer placeholder style */
+.img-shimmer {
+  background: linear-gradient(90deg, #F5F5F5 25%, #EAEAEA 50%, #F5F5F5 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

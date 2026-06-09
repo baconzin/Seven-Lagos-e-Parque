@@ -1,0 +1,6 @@
+{
+  "name": "Seven Construção",
+  "description": "Lagos ornamentais, cascatas, espelhos d'água, fontes decorativas, jardins aquáticos, playgrounds e parquinhos infantis em madeira sob medida de alto padrão.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
