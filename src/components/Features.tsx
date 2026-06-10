@@ -44,7 +44,7 @@ export default function Features() {
     },
     {
       title: 'Pós-venda e Suporte',
-      desc: 'Consultas periódicas imediatas pelo WhatsApp para esclarecer dúvidas de filtragem biológica ou para agendar revitalizações preventivas.',
+      desc: 'Consultas periódicas imediatas pelo WhatsApp para oferecer suporte rápido e garantir o perfeito funcionamento dos nossos projetos.',
       icon: Activity,
     },
   ];

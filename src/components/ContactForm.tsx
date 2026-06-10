@@ -13,6 +13,9 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const [popupBlocked, setPopupBlocked] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState('');
+
   // Format phone number dynamically to (XX) XXXXX-XXXX as user digits
   const formatPhone = (value: string) => {
     let digits = value.replace(/\D/g, '');
@@ -83,7 +86,12 @@ Agradeço e aguardo contato para alinhamento!`;
     
     // Auto-opens after a brief micro-delay for success visuals
     setTimeout(() => {
-      window.open(`https://wa.me/5519971636969?text=${encoded}`, '_blank');
+      const waUrl = `https://wa.me/5519971636969?text=${encoded}`;
+      const newWindow = window.open(waUrl, '_blank');
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        setPopupBlocked(true);
+        setWhatsappUrl(waUrl);
+      }
       setIsSuccess(false);
     }, 1200);
   };
@@ -262,11 +270,14 @@ Agradeço e aguardo contato para alinhamento!`;
                     onChange={handleInputChange}
                     className="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 text-xs sm:text-sm font-sans focus:outline-none focus:border-primary-gold cursor-pointer"
                   >
-                    <option value="Lagos Ornamentais">Lagos Ornamentais</option>
-                    <option value="Área Kids (Playground de Madeira)">Área Kids (Playground de Madeira)</option>
-                    <option value="Área Kids (Playground de Metal)">Área Kids (Playground de Metal)</option>
-                    <option value="Área Kids (Playground Híbrido Ambos Juntos)">Área Kids (Playground Híbrido Ambos Juntos)</option>
-                    <option value="Manutenção Integral ou Upgrades">Manutenção Integral ou Upgrades</option>
+                    <option value="Lago Ornamental">Lago Ornamental</option>
+                    <option value="Deck Deslizante">Deck Deslizante</option>
+                    <option value="Cascata ou Espelho d'Água">Cascata ou Espelho d'Água</option>
+                    <option value="Playground em Madeira">Playground em Madeira</option>
+                    <option value="Playground em Metalon">Playground em Metalon</option>
+                    <option value="Área Kids">Área Kids</option>
+                    <option value="Clínica para TEA">Clínica para TEA</option>
+                    <option value="Outro Projeto">Outro Projeto</option>
                   </select>
                 </div>
               </div>
@@ -304,6 +315,11 @@ Agradeço e aguardo contato para alinhamento!`;
                   <Send className="w-4 h-4" />
                   <span>{isSuccess ? 'Abrindo seu WhatsApp...' : 'Enviar Orçamento pelo WhatsApp'}</span>
                 </button>
+                {popupBlocked && (
+                  <div className="text-[10px] text-center mt-3 bg-red-50 text-red-600 p-2 rounded border border-red-100">
+                    Seu navegador bloqueou o redirecionamento. <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-bold underline">Clique aqui para abrir o WhatsApp</a> ou ligue: (19) 97163-6969
+                  </div>
+                )}
                 <p className="text-[10px] text-gray-400 text-center mt-3 font-sans">
                   * Ao clicar em enviar, você será redirecionado para o WhatsApp com os dados preenchidos de forma formatada e limpa.
                 </p>

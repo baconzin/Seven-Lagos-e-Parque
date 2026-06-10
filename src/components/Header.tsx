@@ -120,6 +120,7 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white p-2 focus:outline-none hover:text-primary-gold transition-colors"
               aria-label="Toggle Menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

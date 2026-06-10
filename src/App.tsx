@@ -12,6 +12,7 @@ import Timeline from './components/Timeline';
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
+import Segments from './components/Segments';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 
@@ -42,6 +43,9 @@ export default function App() {
 
       {/* 8. Verified Customer Statements */}
       <Testimonials />
+
+      {/* Segments Atendidos Section */}
+      <Segments />
 
       {/* 9. Secure WhatsApp Auto-Formatting Contact Questionnaire */}
       <ContactForm />

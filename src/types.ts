@@ -4,15 +4,16 @@ export interface ServiceItem {
   description: string;
   bullets: string[];
   image: string;
-  category: 'lagos' | 'kids';
+  category: string;
 }
 
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'lagos' | 'kids';
+  category: string;
   categoryLabel: string;
   image: string;
+  type?: 'image' | 'video'; // Optional to maintain compatibility
   description: string;
   tags: string[];
 }

@@ -5,13 +5,19 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Check, X, Maximize2, Share2, HelpCircle } from 'lucide-react';
 
 export default function Gallery() {
-  const [activeFilter, setActiveFilter] = useState<'todos' | 'lagos' | 'kids'>('todos');
+  const [activeFilter, setActiveFilter] = useState<string>('todos');
   const [selectedProject, setSelectedProject] = useState<GalleryItem | null>(null);
 
   const filterTabs = [
     { id: 'todos', label: 'Todos' },
     { id: 'lagos', label: 'Lagos Ornamentais' },
-    { id: 'kids', label: 'Área Kids' },
+    { id: 'pergolados', label: 'Coberturas e Pergolados' },
+    { id: 'decks_deslizantes', label: 'Decks Deslizantes' },
+    { id: 'cascatas', label: 'Cascatas' },
+    { id: 'kids_madeira', label: 'Playgrounds Madeira' },
+    { id: 'kids_metalon', label: 'Playgrounds Metalon' },
+    { id: 'areas_kids', label: 'Áreas Kids' },
+    { id: 'clinicas_tea', label: 'Clínicas TEA' },
   ];
 
   const filteredCollection = activeFilter === 'todos'
@@ -56,6 +62,7 @@ export default function Gallery() {
               <button
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id as any)}
+                aria-pressed={activeFilter === tab.id}
                 className={`py-2.5 px-4 rounded-full font-display text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                   activeFilter === tab.id
                     ? 'bg-primary-navy text-white shadow-md font-bold'
@@ -85,16 +92,28 @@ export default function Gallery() {
                 className="group relative bg-[#F5F5F5] rounded-2xl overflow-hidden shadow-lg h-80 cursor-pointer"
                 onClick={() => handleOpenProject(item)}
               >
-                {/* Thumbnail Image */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/' + item.id + '/600/400';
-                  }}
-                />
+                {/* Thumbnail Image or Video */}
+                {item.type === 'video' ? (
+                  <video
+                    src={item.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/' + item.id + '/600/400';
+                    }}
+                  />
+                )}
                 
                 {/* Gradient shade overlays */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-navy/95 via-primary-navy/40 to-transparent p-6 flex flex-col justify-end h-2/3 group-hover:from-primary-green/95 transition-all duration-500" />
@@ -168,17 +187,28 @@ export default function Gallery() {
                   <X className="w-5 h-5" />
                 </button>
 
-                {/* Left col photo pane (7 columns of 12) */}
+                {/* Left col photo or video pane (7 columns of 12) */}
                 <div className="md:col-span-7 bg-black min-h-[300px] md:min-h-[450px] relative">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/' + selectedProject.id + '/800/600';
-                    }}
-                  />
+                  {selectedProject.type === 'video' ? (
+                    <video
+                      src={selectedProject.image}
+                      autoPlay
+                      loop
+                      controls
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://picsum.photos/seed/' + selectedProject.id + '/800/600';
+                      }}
+                    />
+                  )}
                   
                   {/* Subtle water mirror bottom light glow decorator */}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-6 md:hidden">

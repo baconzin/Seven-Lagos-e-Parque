@@ -1,4 +1,4 @@
-import { Waves, Trees, Instagram, Facebook, Mail, MapPin, Phone, Building } from 'lucide-react';
+import { Waves, Trees, Mail, MapPin, Phone, Building } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,28 +39,6 @@ export default function Footer() {
             <p className="font-display font-bold text-primary-gold italic text-[11px]">
               &quot;Construindo espaços que encantam e valorizam.&quot;
             </p>
-
-            {/* Social Network row buttons */}
-            <div className="flex items-center space-x-3 pt-2">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/5 hover:bg-[#8B5A2B] text-white hover:text-[#C9A227] p-2.5 rounded-lg border border-white/10 transition-all shadow-md flex items-center justify-center cursor-pointer"
-                aria-label="Instagram Link"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/5 hover:bg-[#8B5A2B] text-white hover:text-white p-2.5 rounded-lg border border-white/10 transition-all shadow-md flex items-center justify-center cursor-pointer"
-                aria-label="Facebook Link"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-            </div>
           </div>
 
           {/* Col 2: Navigation link groups (2 cols of 12) */}

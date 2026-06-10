@@ -5,8 +5,12 @@ import { Waves, Hammer, RefreshCw, Check, Calculator, Send, Sliders, Layers, Eye
 
 const ICON_MAP: Record<string, any> = {
   lago: Waves,
-  kids: Hammer,
-  manutencao: RefreshCw,
+  decks_deslizantes: Sliders,
+  cascatas: Waves,
+  kids_madeira: Hammer,
+  kids_metalon: Hammer,
+  areas_kids: Layers,
+  clinicas_tea: Eye,
 };
 
 export default function Services() {
@@ -14,21 +18,21 @@ export default function Services() {
   const [selectedSimCategory, setSelectedSimCategory] = useState<'lago' | 'kids'>('lago');
   const [simArea, setSimArea] = useState<number>(35); // in m²: range 1 to 200
   const [lagoDeckType, setLagoDeckType] = useState<'com_deck' | 'sem_deck'>('com_deck');
-  const [kidsMaterialType, setKidsMaterialType] = useState<'madeira' | 'metal' | 'ambos'>('madeira');
+  const [kidsMaterialType, setKidsMaterialType] = useState<'madeira' | 'metalon'>('madeira');
   const [simAddons, setSimAddons] = useState<string[]>([]);
 
   const addonsList = {
     lago: [
-      { id: 'ozonio', name: 'Filtragem avançada por Ozônio (Água extra cristalina)', complex: 1 },
-      { id: 'carp', name: 'Aclimatação de Carpas Nishikigoi selecionadas', complex: 1 },
-      { id: 'stone', name: 'Rochas Naturais Gigantes Moledo para contorno', complex: 2 },
-      { id: 'led', name: 'Iluminação subaquática LED programável por app', complex: 1 },
+      { id: 'ozonio', name: 'Filtragem avançada transparente', complex: 1 },
+      { id: 'carp', name: 'Aclimatação de Carpas', complex: 1 },
+      { id: 'stone', name: 'Rochas Moledo para contorno', complex: 2 },
+      { id: 'led', name: 'Iluminação subaquática LED', complex: 1 },
     ],
     kids: [
-      { id: 'casinha', name: 'Casinha elevada com mirante e passarela', complex: 2 },
-      { id: 'escorregador', name: 'Escorregador com calha de alta resistência', complex: 1 },
-      { id: 'escalada', name: 'Parede de escalada vertical com apoios de resina', complex: 1 },
-      { id: 'balancos', name: 'Acoplamento de Balanço Duplo ergonômico', complex: 1 },
+      { id: 'casinha', name: 'Casinha elevada infantil', complex: 2 },
+      { id: 'escorregador', name: 'Escorregador e descidas', complex: 1 },
+      { id: 'escalada', name: 'Parede de escalada', complex: 1 },
+      { id: 'balancos', name: 'Acoplamento de Balanço', complex: 1 },
     ]
   };
 
@@ -52,7 +56,7 @@ export default function Services() {
     if (selectedSimCategory === 'lago') {
       if (lagoDeckType === 'com_deck') score += 1;
     } else {
-      if (kidsMaterialType === 'ambos') score += 2;
+      if (kidsMaterialType === 'metalon') score += 1;
     }
 
     if (score <= 3) {
@@ -82,7 +86,7 @@ export default function Services() {
     const spaceCategoryName = selectedSimCategory === 'lago' ? 'Lago Ornamental' : 'Área Kids (Playground)';
     const specificationDetail = selectedSimCategory === 'lago'
       ? `Configuração: ${lagoDeckType === 'com_deck' ? 'Com Deck' : 'Sem Deck'}`
-      : `Material: ${kidsMaterialType === 'madeira' ? 'Playground de Madeira' : kidsMaterialType === 'metal' ? 'Playground de Metal' : 'Multi Material (Madeira + Metal)'}`;
+      : `Material: ${kidsMaterialType === 'madeira' ? 'Playground de Madeira' : 'Playground de Metalon'}`;
 
     const activeAddonNames = currentAddons
       .filter((addon) => simAddons.includes(addon.id))
@@ -161,7 +165,7 @@ Gostaria de agendar uma visita técnica para validar as metragens e bater um pap
                   </div>
 
                   {/* Bullet Specifications list */}
-                  <ul className="space-y-2 border-t border-gray-100 pt-4">
+                  <ul className="space-y-2 border-t border-gray-100 mt-4 pt-4">
                     {service.bullets.map((bullet, bidx) => (
                       <li key={bidx} className="flex items-start space-x-2 text-xs text-gray-700 leading-tight">
                         <Check className="w-4 h-4 text-primary-green shrink-0 mt-0.5" />
@@ -261,10 +265,17 @@ Gostaria de agendar uma visita técnica para validar as metragens e bater um pap
                 >
                   {selectedSimCategory === 'lago' ? (
                     <div className="space-y-2">
-                      <label className="font-display text-xs font-extrabold text-cyan-400 uppercase tracking-widest block">
+                      <label 
+                        id="deck-label"
+                        className="font-display text-xs font-extrabold text-cyan-400 uppercase tracking-widest block"
+                      >
                         Estrutura do Deck:
                       </label>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div 
+                        role="group" 
+                        aria-labelledby="deck-label"
+                        className="grid grid-cols-2 gap-3"
+                      >
                         {[
                           { id: 'com_deck', label: 'Com Deck' },
                           { id: 'sem_deck', label: 'Sem Deck' }
@@ -286,14 +297,20 @@ Gostaria de agendar uma visita técnica para validar as metragens e bater um pap
                     </div>
                   ) : (
                     <div className="space-y-2">
-                      <label className="font-display text-xs font-extrabold text-cyan-400 uppercase tracking-widest block">
+                      <label 
+                        id="material-label"
+                        className="font-display text-xs font-extrabold text-cyan-400 uppercase tracking-widest block"
+                      >
                         Material do Playground Infantil:
                       </label>
-                      <div className="grid grid-cols-3 gap-2">
+                      <div 
+                        role="group" 
+                        aria-labelledby="material-label"
+                        className="grid grid-cols-2 gap-2"
+                      >
                         {[
-                          { id: 'madeira', label: 'Madeira Tratada', desc: 'Charme rústico' },
-                          { id: 'metal', label: 'Metal Galvanizado', desc: 'Estilo industrial' },
-                          { id: 'ambos', label: 'Multi Material', desc: 'Madeira & Metal' }
+                          { id: 'madeira', label: 'Playground em Madeira', desc: 'Charme rústico' },
+                          { id: 'metalon', label: 'Playground em Metalon', desc: 'Estrutura reforçada' }
                         ].map((mat) => (
                           <button
                             key={mat.id}
@@ -317,7 +334,7 @@ Gostaria de agendar uma visita técnica para validar as metragens e bater um pap
 
               {/* Step 2: NEW Metragem Área Slider */}
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between" id="area-label">
                   <label className="font-display text-xs font-extrabold text-cyan-400 uppercase tracking-widest flex items-center space-x-2">
                     <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
                     <span>2. Qual a área média disponível?</span>
@@ -334,6 +351,7 @@ Gostaria de agendar uma visita técnica para validar as metragens e bater um pap
                     max="200"
                     value={simArea}
                     onChange={(e) => setSimArea(Number(e.target.value))}
+                    aria-describedby="area-label"
                     className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-cyan-400 focus:outline-none"
                     style={{
                       background: `linear-gradient(to right, #22d3ee ${(simArea - 1) / 1.99}%, rgba(255, 255, 255, 0.1) ${(simArea - 1) / 1.99}%)`

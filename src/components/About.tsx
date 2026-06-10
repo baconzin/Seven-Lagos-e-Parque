@@ -7,8 +7,8 @@ export default function About() {
       desc: 'Nossos playgrounds são esculpidos com madeiras selecionadas de lei, tratadas com verniz de classe naval, quinas meticulosamente arredondadas e fixações ocultas que evitam acidentes.'
     },
     {
-      title: 'Engenharia Biológica Avançada',
-      desc: 'Os lagos ornamentais projetados pela Seven não são meros espelhos d\'água. Eles trazem mídias de filtragem eficientes (geradores de ozônio e lâmpadas UV), garantindo água 100% limpa.'
+      title: 'Excelência em Projetos Exclusivos',
+      desc: 'Os lagos ornamentais projetados pela Seven Construção não são meros espelhos d\'água. Eles utilizam sistemas eficientes de filtragem, garantindo água sempre cristalina e promovendo o bem-estar visual sem complicações.'
     },
     {
       title: 'Soluções Chave na Mão',
@@ -27,7 +27,7 @@ export default function About() {
             {/* Primary Frame */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="https://images.unsplash.com/photo-1563884105-188b89410518?q=80&w=800"
+                src="/PISCINA NATURAL 02.png"
                 alt="Lago ornamental premium com carpas e água cristalina"
                 className="w-full h-[350px] sm:h-[450px] object-cover"
                 referrerPolicy="no-referrer"
@@ -38,8 +38,8 @@ export default function About() {
             {/* Overlapping secondary illustration representing craftsmanship woodwork */}
             <div className="absolute -bottom-6 -right-4 sm:-right-8 w-2/3 sm:w-1/2 rounded-xl overflow-hidden shadow-2xl border-4 border-white hidden sm:block">
               <img
-                src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=600"
-                alt="Playground de madeira sob medida premium"
+                src="/Deck deslizante.png"
+                alt="Deck deslizante automatizado com requinte"
                 className="w-full h-[180px] sm:h-[220px] object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -81,11 +81,11 @@ export default function About() {
             </div>
 
             <p className="font-sans text-gray-700 text-base leading-relaxed">
-              A **Seven** desenvolve projetos exclusivos para clientes refinados que buscam beleza, lazer e valorização patrimonial. Nossa equipe combina vasta experiência prática em construção, paisagismo moderno e marcenaria artística para entregar ambientes únicos, funcionais e duradouros.
+              A **Seven Construção** desenvolve projetos exclusivos para clientes que buscam beleza, lazer e valorização. Nossa equipe combina vasta experiência prática em construção de lagos, cascatas e playgrounds em playgrounds lúdicos, e também no segmento da saúde com o projeto de clínicas TEA.
             </p>
 
             <p className="font-sans text-gray-600 text-sm leading-relaxed border-l-4 border-primary-green pl-4">
-              Cada detalhe de nossos lagos ornamentais é projetado respeitando a natureza e a estética do local. Cada encaixe de brinquedo é testado estruturalmente para resistir a anos de uso contínuo, proporcionando uma experiência de lazer e descanso ideal na sua residência.
+              Cada detalhe de nossos lagos e áreas recreativas é planejado pensando na harmonia do ambiente, utilizando materiais de alta qualidade para resistir a anos de uso contínuo com beleza impecável.
             </p>
 
             {/* Three key pillars description list */}

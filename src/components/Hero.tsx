@@ -4,7 +4,7 @@ import { MessageSquare, Calendar, ChevronRight, Waves, Sparkles, Hammer } from '
 
 const HERO_SLIDES = [
   {
-    image: 'https://images.unsplash.com/photo-1563884105-188b89410518?q=80&w=1920',
+    image: '/PISCINA NATURAL 03.png',
     tag: 'Lagos Ornamentais',
     title: 'Lagos Ornamentais de Alto Padrão',
     desc: 'Ecossistemas biológicos sofisticados com carpas nobres, filtragem automatizada por ozônio e opção de deck integrado em madeira de lei.',
@@ -12,7 +12,23 @@ const HERO_SLIDES = [
     badgeText: 'Águas Cristalinas e Filtragem com Ozônio'
   },
   {
-    image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=1920',
+    image: '/PISCINA NATURAL 02.png',
+    tag: 'Piscinas Naturais',
+    title: 'Piscinas Naturais Imersivas',
+    desc: 'Projetos harmoniosos com água límpida, pedras naturais e perfeita integração ao paisagismo, proporcionando beleza de ponta em seu ambiente.',
+    icon: Waves,
+    badgeText: 'Integração Perfeita & Paisagismo'
+  },
+  {
+    image: '/Deck deslizante.png',
+    tag: 'Decks Deslizantes',
+    title: 'Decks Deslizantes Automatizados',
+    desc: 'Otimização inteligente do seu espaço com decks que deslizam suavemente sobre sua piscina ou lago, proporcionando máxima sofisticação e segurança.',
+    icon: Sparkles,
+    badgeText: 'Design Inovador & Otimização de Espaço'
+  },
+  {
+    image: '/Area kids 002.jpeg',
     tag: 'Área Kids',
     title: 'Playgrounds Premium sob Medida',
     desc: 'Dê vida ao seu parquinho com opções robustas em madeira de lei tratada, estruturas em metal altamente resistente ou a união híbrida de ambos.',
@@ -76,8 +92,8 @@ export default function Hero() {
       <div className="absolute top-1/4 right-32 w-48 h-48 rounded-full border-2 border-primary-wood/10 pointer-events-none hidden xl:block animate-wave-slow" />
 
       {/* Content wrapper */}
-      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-        <div className="max-w-3xl mt-16 sm:mt-24 space-y-6">
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center text-center">
+        <div className="max-w-3xl mt-16 sm:mt-24 space-y-6 flex flex-col items-center">
           
           {/* Animated Accent Line Badge */}
           <motion.div
@@ -95,17 +111,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-4"
+            className="flex flex-col"
           >
-            <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
+            <h1 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
               Transformamos Espaços em <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold via-[#e5c158] to-white relative">
                 Experiências Inesquecíveis
               </span>
             </h1>
             
-            <p className="font-sans text-base sm:text-lg md:text-xl text-[#F5F5F5]/90 leading-relaxed font-light">
-              Especialistas no projeto e execução de lagos ornamentais de alto padrão (com ou sem deck) e parquinhos infantis residenciais sob medida com acabamento impecável e extrema segurança.
+            <p className="font-sans text-base sm:text-lg md:text-xl text-[#F5F5F5]/90 leading-relaxed font-light mt-10 sm:mt-14 max-w-2xl mx-auto">
+              Especialistas no projeto e execução de lagos ornamentais de alto padrão e áreas kids sob medida, com acabamento impecável e extrema segurança.
             </p>
           </motion.div>
 
@@ -114,7 +130,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-10 sm:pt-12 w-full"
           >
             {/* CTA 1: Request Quote on site */}
             <button
@@ -142,7 +158,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="pt-8 border-t border-white/10 hidden sm:flex items-center space-x-8 text-white/70 text-xs"
+            className="pt-8 border-t border-white/10 hidden sm:flex items-center justify-center space-x-8 text-white/70 text-xs w-full"
           >
             <div className="flex items-center space-x-2">
               <span className="text-primary-gold font-bold text-lg">✓</span>
@@ -171,6 +187,7 @@ export default function Hero() {
               currentSlide === idx ? 'w-10 bg-primary-gold' : 'w-2 bg-white/40'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
+            aria-current={currentSlide === idx ? 'true' : 'false'}
           />
         ))}
       </div>
